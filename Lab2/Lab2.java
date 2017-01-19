@@ -4,63 +4,55 @@ import java.util.Scanner;
 public class Lab2 {
 	public static void main(String[] args) {
 
-		Numbers numbers = new Numbers();
+		Numbers num = new Numbers();
 		Scanner sc = new Scanner(System.in);
 
 		boolean done = false;
+		int option = 0;
 
-		while (!done) {
-			try {
-
+		try {
+			while (!done) {
 				System.out
 						.println("Enter 1 to create array of new size,\n" + "2 to generate random numbers into array,\n"
 								+ "3 to count a value, 4 to display array,\n" + "5 to sort, 0 to quit:");
 
-				int option = 0;
-
-				while (!sc.hasNextLine())
-					sc.next();
-
 				option = sc.nextInt();
-				sc.nextLine();
 
 				switch (option) {
 				case 1:
-					numbers.arrayNewSize();
+					num.newSize();
 					break;
 
 				case 2:
-					numbers.generateNumbers();
+					num.generateNum();
 					break;
 
 				case 3:
-					numbers.count();
+					num.count();
 					break;
 
 				case 4:
-					numbers.toString();
+					num.display();
 					break;
 
 				case 5:
-					numbers.insertionSort();
+					num.insertionSort();
 					break;
 
 				case 0:
+					System.out.println("Quit");
 					done = true;
-					System.out.println("quit");
 					break;
 
 				default:
-					System.out.println("unrecognized command");
-
+					System.out.println("Invalid option, please try again");
+					break;
 				}
 				System.out.println();
-
-			} catch (InputMismatchException e) {
-				System.err.println("Please enter integer numbers for menu selection");
-				sc.nextLine();
 			}
 
+		} catch (InputMismatchException e) {
+			System.out.println("ERROR!!");
 		}
 
 	}
