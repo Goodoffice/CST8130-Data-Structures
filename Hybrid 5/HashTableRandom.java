@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class HashTable {
+public class HashTableRandom {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int[] numbers = new int[100];
@@ -14,7 +14,10 @@ public class HashTable {
 		int middleTwo = 0;
 		int lastSum = 0;
 
-		for (num = 145623; num <= 145723; num++) {
+		for (int i = 0; i < numbers.length; i++) {
+			numbers[i] = num;
+			num = (int) (Math.random() * 890000 + 100000);
+
 			lastTwo = last(num);
 			middleTwo = middle(num);
 			lastSum = sum(num);
@@ -37,10 +40,13 @@ public class HashTable {
 					System.out.println("Number cannot be placed!");
 				}
 			}
+
 			System.out.println("Number  last two digits  middle two digits  last digits of sum");
+
 			System.out.printf("%6d %8d %16d %20d \n", num, lastTwo, middleTwo, lastSum);
 			System.out.println("");
 		}
+
 	}
 
 	public static int last(int value) {
@@ -61,4 +67,5 @@ public class HashTable {
 		}
 		return sum;
 	}
+
 }
