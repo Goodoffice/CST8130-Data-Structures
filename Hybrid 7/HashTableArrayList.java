@@ -1,15 +1,15 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HashTableArray {
+public class HashTableArrayList {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 
-		// dynamic allocated array
-		String[] dataItem = new String[100];
+		ArrayList<String> dataItem = new ArrayList<String>();
 
 		for (int i = 0; i < 100; i++) {
-			dataItem[i] = null;
+			dataItem.add(i, null);
 		}
 
 		String choice = "1";
@@ -26,16 +26,16 @@ public class HashTableArray {
 				// use hash algorithm to calculate the index
 				int index = hash(temp);
 
-				if (dataItem[index] == null) {
-					dataItem[index] = temp;
+				if (dataItem.get(index) == null) {
+					dataItem.set(index, temp);
 					System.out.println("String was placed at index " + index + "\n");
 				} else {
 					boolean done = false;
 
 					for (int i = index + 1; i < 100; i++) {
-						if (dataItem[i] == null) {
+						if (dataItem.get(i) == null) {
 							done = true;
-							dataItem[i] = temp;
+							dataItem.set(i, temp);
 							System.out.println("String was placed at sequential position at index \n" + i + "\n");
 							break;
 						}
@@ -53,14 +53,14 @@ public class HashTableArray {
 
 				int index = hash(temp);
 
-				if (dataItem[index] == null) {
+				if (dataItem.get(index) == null) {
 					System.out.println("String is not in the hashtable\n");
 				} else {
 					boolean done = false;
 					for (int i = index; i < 100; i++) {
-						if (dataItem[i] == null)
+						if (dataItem.get(i) == null)
 							break;
-						if (dataItem[i].equals(temp)) {
+						if (dataItem.get(i).equals(temp)) {
 							System.out.println("String " + temp + " is in array at index " + i + "\n");
 							done = true;
 							break;
@@ -78,15 +78,15 @@ public class HashTableArray {
 
 				int index = hash(temp);
 
-				if (dataItem[index] == null) {
+				if (dataItem.get(index) == null) {
 					System.out.println("The array is empty, nothing to delete.\n");
 				} else {
 					boolean done = false;
 					for (int i = index; i < 100; i++) {
-						if (dataItem[i] == null)
+						if (dataItem.get(i) == null)
 							break;
-						if (dataItem[i].equals(temp)) {
-							dataItem[index] = null;
+						if (dataItem.get(i).equals(temp)) {
+							dataItem.set(index, null);
 							System.out.println("string " + temp + " in the index " + i + " is already deleated.\n");
 							done = true;
 							break;
